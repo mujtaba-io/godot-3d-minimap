@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dufyi1iper120"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_l1eb4"]
+size = Vector3(16, 1, 16)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vwwo"]
+albedo_color = Color(0.884551, 0.547889, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xabai"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qwf2t"]
+albedo_color = Color(0.886275, 0.152941, 0, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_l1eb4")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.733846, 0)
+material_override = SubResource("StandardMaterial3D_7vwwo")
+mesh = SubResource("CapsuleMesh_xabai")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.839373, 0.543555, 0, -0.543555, 0.839373, 0, 0, 0, 1, -0.0624993, 0.733846, 2.36574)
+material_override = SubResource("StandardMaterial3D_7vwwo")
+mesh = SubResource("CapsuleMesh_xabai")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.158765, -0.102812, 0.981949, -0.543555, 0.839373, 0, -0.824222, -0.533744, -0.189147, 2.88211, 0.733846, 0.554748)
+material_override = SubResource("StandardMaterial3D_qwf2t")
+mesh = SubResource("CapsuleMesh_xabai")

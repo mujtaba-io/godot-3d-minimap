@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://jta1b68inpry"]
+
+[ext_resource type="Script" path="res://MinimapSystem/MinimapSystem.gd" id="1_pro0l"]
+
+[node name="MinimapSystem" type="Node3D"]
+script = ExtResource("1_pro0l")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+current = true
