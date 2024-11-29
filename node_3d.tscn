@@ -1,4 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dufyi1iper120"]
+[gd_scene load_steps=10 format=3 uid="uid://dufyi1iper120"]
+
+[ext_resource type="PackedScene" uid="uid://jta1b68inpry" path="res://MinimapSystem/MinimapSystem.tscn" id="1_hhxgs"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4ygjd"]
+
+[sub_resource type="Sky" id="Sky_ryr6n"]
+sky_material = SubResource("ProceduralSkyMaterial_4ygjd")
+
+[sub_resource type="Environment" id="Environment_bmskj"]
+background_mode = 2
+sky = SubResource("Sky_ryr6n")
 
 [sub_resource type="BoxMesh" id="BoxMesh_l1eb4"]
 size = Vector3(16, 1, 16)
@@ -11,7 +22,20 @@ albedo_color = Color(0.884551, 0.547889, 0, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qwf2t"]
 albedo_color = Color(0.886275, 0.152941, 0, 1)
 
+[sub_resource type="Environment" id="Environment_grx24"]
+tonemap_mode = 2
+
 [node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bmskj")
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.373603, 0.927589, 0, -0.927589, -0.373603, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.752415, -0.141444, 0.643324, 0, 0.976672, 0.214735, -0.658689, -0.16157, 0.734863, 8.76498, 6.90637, 9.74473)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_l1eb4")
@@ -30,3 +54,11 @@ mesh = SubResource("CapsuleMesh_xabai")
 transform = Transform3D(-0.158765, -0.102812, 0.981949, -0.543555, 0.839373, 0, -0.824222, -0.533744, -0.189147, 2.88211, 0.733846, 0.554748)
 material_override = SubResource("StandardMaterial3D_qwf2t")
 mesh = SubResource("CapsuleMesh_xabai")
+
+[node name="MinimapSystem" parent="." node_paths=PackedStringArray("minimap_camera", "player") instance=ExtResource("1_hhxgs")]
+minimap_camera = NodePath("TopDownCamera3D")
+player = NodePath("..")
+
+[node name="TopDownCamera3D" type="Camera3D" parent="MinimapSystem"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 13.4002, 0)
+environment = SubResource("Environment_grx24")
